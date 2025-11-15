@@ -86,9 +86,10 @@ main(int argc, char* argv[])
     // assign the true (real) start of the weekday of the 1st day of the current month
     int real_weekday_start = first_of_the_month->tm_wday;
 
-    // calculate the number of the rows for the current month, so it's either 4, 5 or 6 - starting with 5
+    // calculate the number of the rows for the current month, so it's either 4, 5 or 6 - starting with 5 - which is by far
+    // the most common variation
     int max_rows = 5;
-    // only in month with 30 or 31 days and where the weekday is either Fri or Sat, than the table must expand to 6 rows to fit the data
+    // only in months with 30 or 31 days AND where the weekday is either Fri or Sat, than the table must expand to 6 rows to fit the data
     if ((first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 5 && last_day_of_the_month == 30) ||
         (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 6 && last_day_of_the_month == 30) ||
         (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 5 && last_day_of_the_month == 31) ||
