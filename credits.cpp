@@ -1,9 +1,10 @@
 /*
- * Name:    dejakju@gmail.com
- * Date:    2023-05-02
- * Update:  2025-07-19
- * Desc.:   Writes any textfile to 'stdout' in a typewriter fashion
- */
+    $VER:       credits.cpp 1.3
+    $DATE:      2023-05-02 (2025-11-15)
+    $AUTHOR:    Goran (dejakju@gmail.com)
+
+** Description: Writes a textfile to 'stdout' in a typewriter fashion
+*/
 
 #include <chrono>
 #include <fstream>
@@ -24,13 +25,13 @@ show_usage(const char *argv0)
     std::cout << "Usage: "
         << argv0 << " [opt]"
         << std::endl
-        << "\t -f .......... filename/path (default: credits.txt)"
+        << "\t -f \t.......... filename/path (default: credits.txt)"
         << std::endl
-        << "\t -t .......... milliseconds (default: 25)"
+        << "\t -t \t.......... milliseconds (default: 25)"
         << std::endl
-        << "\t -h .......... show usage"
+        << "\t -h \t.......... show usage"
         << std::endl
-        << "\t -v .......... show version"
+        << "\t -v \t.......... show version"
         << std::endl;
     exit(1);
 }

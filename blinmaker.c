@@ -1,11 +1,10 @@
 /*
- * Name:    dejakju@gmail.com
- * Date:    2023-08-03
- * Update:  2023-08-10
- * Desc.:   A 'C' port of the fantastic 'blinmaker' inspired by Boris (https://www.youtube.com/watch?v=FMIZEfjYmtM)
- */
+    $VER:       blinmaker.c 1.1
+    $DATE:      2023-08-03 (2023-08-10)
+    $AUTHOR:    Goran (dejakju@gmail.com)
 
-/*
+** Description: A 'C' port of the fantastic 'blinmaker' inspired by Boris (https://www.youtube.com/watch?v=FMIZEfjYmtM)
+**
 **  An actual recipie which works (for 6-8 pancakes, depending on the thickness):
 **
 **      150g  Flour
@@ -14,12 +13,15 @@
 **      125ml Mineral Water
 **            A pinch of salt
 **            Sugar at will
-**
 */
 
 #include <stdio.h>
 
-int main(void)
+#define BLINMAKER_VERSION   1
+#define BLINMAKER_REVISION  1
+
+int
+main(void)
 {
 
     int eggsAmount = 0;
