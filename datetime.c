@@ -1,6 +1,6 @@
 /*
-    $VER:       datetime.c 1.8
-    $DATE:      2023-08-03 (2025-11-15)
+    $VER:       datetime.c 1.9
+    $DATE:      2023-08-03 (2026-04-10)
     $AUTHOR:    Goran (dejakju@gmail.com)
 
 ** Description: Display current month as a calendar
@@ -14,7 +14,7 @@
 #include <ctype.h>
 
 #define DATETIME_VERSION    1
-#define DATETIME_REVISION   8
+#define DATETIME_REVISION   9
 
 bool
 is_leap_year(int year) {
@@ -95,8 +95,7 @@ main(int argc, char* argv[])
         (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 5 && last_day_of_the_month == 31) ||
         (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 6 && last_day_of_the_month == 31)) {
         ++max_rows;
-    // if - and only if - the 1st of february starts on a Sun, than just 4 rows are ever enough
-    // and it's not a leap year!
+    // if - and only if - the 1st of february starts on a Sun and it's not a leap year, than just 4 rows are ever enough
     } else if (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 0 && last_day_of_the_month == 28) {
         if (!is_leap_year(year))
             --max_rows;

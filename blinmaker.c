@@ -1,6 +1,6 @@
 /*
-    $VER:       blinmaker.c 1.1
-    $DATE:      2023-08-03 (2023-08-10)
+    $VER:       blinmaker.c 1.2
+    $DATE:      2023-08-03 (2026-04-10)
     $AUTHOR:    Goran (dejakju@gmail.com)
 
 ** Description: A 'C' port of the fantastic 'blinmaker' inspired by Boris (https://www.youtube.com/watch?v=FMIZEfjYmtM)
@@ -16,13 +16,41 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define BLINMAKER_VERSION   1
-#define BLINMAKER_REVISION  1
+#define BLINMAKER_REVISION  2
+
+void
+show_usage(const char *argv0)
+{
+    printf("Usage: ");
+    printf("%s [opt]", argv0);
+    printf("\n\t -H, -h, -? \t.......... show this help");
+    printf("\n\t -V, -v     \t.......... show version information");
+    printf("\n");
+    exit(1);
+}
 
 int
-main(void)
+main(int argc, char* argv[])
 {
+
+    if (argc > 1) {
+        if ((argv[1][0] == '/' && argv[1][1] == '?') || 
+            (argv[1][0] == '-' && argv[1][1] == '?') || 
+            (argv[1][0] == '-' && argv[1][1] == 'H') || 
+            (argv[1][0] == '-' && argv[1][1] == 'h')) {
+            show_usage(argv[0]);
+        }
+    }
+
+    if (argc > 1) {
+        if ((argv[1][0] == '-' && argv[1][1] == 'V') || (argv[1][0] == '-' && argv[1][1] == 'v')) {
+            printf("\x1b[1;36m%s\x1b[0m %d.%d (compiled %s, %s)\n", argv[0], BLINMAKER_VERSION, BLINMAKER_REVISION, __TIME__, __DATE__);
+            exit(0);
+        }
+    }
 
     int eggsAmount = 0;
     int eggsMin = 3;
