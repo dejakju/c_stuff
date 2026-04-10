@@ -1,9 +1,9 @@
 /*
-    $VER:       credits.cpp 1.3
-    $DATE:      2023-05-02 (2025-11-15)
+    $VER:       credits.cpp 1.4
+    $DATE:      2023-05-02 (2026-04-10)
     $AUTHOR:    Goran (dejakju@gmail.com)
 
-** Description: Writes a textfile to 'stdout' in a typewriter fashion
+** Description: Writes either a default or any given textfile to 'stdout' in a typewriter fashion
 */
 
 #include <chrono>
@@ -16,7 +16,7 @@
 #include <unistd.h>
 
 #define CREDITS_VERSION     1
-#define CREDITS_REVISION    3
+#define CREDITS_REVISION    4
 
 
 static void
@@ -41,7 +41,7 @@ static void
 show_version(const char *argv0)
 {
     std::cout << "\x1b[1;33m" << argv0 << "\x1b[1;30m"
-        << " version " << CREDITS_VERSION << "." << CREDITS_REVISION
+        << " " << CREDITS_VERSION << "." << CREDITS_REVISION
         << " (compiled: " << __DATE__ << ", " << __TIME__ << ")"
         << "\x1b[0m"
         << std::endl;
@@ -59,7 +59,6 @@ is_numeric(std::string s)
 }
 
 
-/************************************* MAIN ENTRY POINT *************************************/
 int 
 main(int argc, char* argv[])
 {
