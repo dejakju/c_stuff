@@ -96,8 +96,10 @@ main(int argc, char* argv[])
         (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 6 && last_day_of_the_month == 31)) {
         ++max_rows;
     // if - and only if - the 1st of february starts on a Sun, than just 4 rows are ever enough
+    // and it's not a leap year!
     } else if (first_of_the_month->tm_mday == 1 && first_of_the_month->tm_wday == 0 && last_day_of_the_month == 28) {
-        --max_rows;
+        if (!is_leap_year(year))
+            --max_rows;
     }
 
     printf("\x1b[1m%28s %d\x1b[0m\t %02d:%02d:%02d\n", month_names[month], year, current_hour, current_minute, current_second);
