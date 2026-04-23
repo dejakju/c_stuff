@@ -25,7 +25,7 @@ is_leap_year(int year) {
 }
 
 void
-show_usage(const char *argv0)
+show_usage(const char* argv0)
 {
     printf("Usage: ");
     printf("%s [opt]", argv0);
@@ -60,7 +60,7 @@ main(int argc, char* argv[])
     char *weekday_names[] = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
     
     time_t now = time(0);
-    struct tm *datetime = localtime(&now);
+    struct tm* datetime = localtime(&now);
 
     int current_hour = datetime->tm_hour;
     int current_minute = datetime->tm_min;
@@ -69,7 +69,7 @@ main(int argc, char* argv[])
     int current_day = datetime->tm_mday; // day of the month
     int yday = datetime->tm_yday; // days since January 1
 
-    struct tm *modified_time = localtime(&now);
+    struct tm* modified_time = localtime(&now);
     // years since 1900
     int year = modified_time->tm_year + 1900;
     // account for leap years in months since January
@@ -81,7 +81,7 @@ main(int argc, char* argv[])
 
 
     time_t first_of_current_month = mktime(modified_time);
-    struct tm *first_of_the_month = localtime(&first_of_current_month);
+    struct tm* first_of_the_month = localtime(&first_of_current_month);
 
     // assign the true (real) start of the weekday of the 1st day of the current month
     int real_weekday_start = first_of_the_month->tm_wday;
@@ -111,8 +111,8 @@ main(int argc, char* argv[])
     for (int row = 0; row < max_rows; ++row) {
         for (int col = 0; col < 7; ++col) {
 
-            // index is shifted by +1 for display reasons as the first day is 1 and not 0
-            // then it's adjusted for the true weekday (-real_weekday_start), so the index-ing begins at that point =)
+            // index is shifted by +1 for output only as the 'first' day is 1 and not 0
+            // then it's adjusted for the true weekday (-real_weekday_start), so the index-ing begins at that point
             int index = col + (row * 7) + 1 - real_weekday_start;
 
             if (index <= 0) {
